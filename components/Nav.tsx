@@ -7,8 +7,8 @@ import { usePathname } from 'next/navigation';
 const navLinks = [
   { href: '/polaris', label: 'Polaris' },
   { href: '/suppliers', label: 'Suppliers' },
+  { href: '/insights', label: 'Insights' },
   { href: '/about', label: 'Company' },
-  { href: '/blog', label: 'Blog' },
 ];
 
 export default function Nav() {

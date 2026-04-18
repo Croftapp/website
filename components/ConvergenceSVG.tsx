@@ -64,27 +64,32 @@ export default function ConvergenceSVG() {
       <circle cx="410" cy="380" r="9" fill="rgba(78,205,196,0.12)" />
 
       <g filter="url(#dotGlow)">
-        <circle r="2.5" fill="rgba(78,205,196,0.9)">
+        <circle r="2.5" fill="rgba(78,205,196,0.9)" opacity="0">
+          <animate attributeName="opacity" to="1" dur="0.01s" begin="0s" fill="freeze" />
           <animateMotion dur="5s" repeatCount="indefinite" begin="0s">
             <mpath href="#cl1" />
           </animateMotion>
         </circle>
-        <circle r="2.5" fill="rgba(78,205,196,0.9)">
+        <circle r="2.5" fill="rgba(78,205,196,0.9)" opacity="0">
+          <animate attributeName="opacity" to="1" dur="0.01s" begin="1.2s" fill="freeze" />
           <animateMotion dur="4s" repeatCount="indefinite" begin="1.2s">
             <mpath href="#cl2" />
           </animateMotion>
         </circle>
-        <circle r="2.5" fill="rgba(78,205,196,0.9)">
+        <circle r="2.5" fill="rgba(78,205,196,0.9)" opacity="0">
+          <animate attributeName="opacity" to="1" dur="0.01s" begin="0.6s" fill="freeze" />
           <animateMotion dur="3.5s" repeatCount="indefinite" begin="0.6s">
             <mpath href="#cl3" />
           </animateMotion>
         </circle>
-        <circle r="2.5" fill="rgba(78,205,196,0.9)">
+        <circle r="2.5" fill="rgba(78,205,196,0.9)" opacity="0">
+          <animate attributeName="opacity" to="1" dur="0.01s" begin="1.8s" fill="freeze" />
           <animateMotion dur="4s" repeatCount="indefinite" begin="1.8s">
             <mpath href="#cl4" />
           </animateMotion>
         </circle>
-        <circle r="2.5" fill="rgba(78,205,196,0.9)">
+        <circle r="2.5" fill="rgba(78,205,196,0.9)" opacity="0">
+          <animate attributeName="opacity" to="1" dur="0.01s" begin="2.4s" fill="freeze" />
           <animateMotion dur="5s" repeatCount="indefinite" begin="2.4s">
             <mpath href="#cl5" />
           </animateMotion>
