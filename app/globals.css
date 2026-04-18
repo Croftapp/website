@@ -519,3 +519,27 @@ html:has(.product-page) { scroll-snap-type: none !important; }
     .footer-main { margin-bottom: 40px; }
 }
 
+/* ── Mobile (≤640px) hero layout ─────────────── */
+@media (max-width: 640px) {
+    .hero { padding-top: 80px; }
+    .hero-banner { flex: 0 0 45vh; }
+    .hero-banner-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+        padding: 0 20px 24px;
+    }
+    .hero-social { text-align: left; }
+    .social-row { justify-content: flex-start; }
+    .hero-white { padding: 32px 20px; }
+    .hero-white h1 { margin-bottom: 16px; }
+    .hero-desc { max-width: 100%; margin-bottom: 24px; }
+    .hero-white .btn-dark {
+        position: static;
+        margin-top: 8px;
+        width: 100%;
+        text-align: center;
+    }
+    .hero-roles { margin-bottom: 12px; }
+}
+
