@@ -796,6 +796,18 @@ html:has(.product-page) { scroll-snap-type: none !important; }
         padding: 12px 16px;
         font-size: 14px;
     }
+
+    /* Break long URLs / unbreakable tokens in article body — iOS Safari fix */
+    .insights-content,
+    .insights-content p,
+    .insights-content li,
+    .insights-content a {
+        overflow-wrap: anywhere;
+        word-break: break-word;
+    }
+
+    /* Viewport safety net: prevent any stray element from widening the page */
+    html, body { overflow-x: hidden; }
 }
 
 /* ── Mobile (≤640px) product pages ───────────── */
