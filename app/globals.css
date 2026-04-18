@@ -794,3 +794,47 @@ html:has(.product-page) { scroll-snap-type: none !important; }
     }
 }
 
+/* ── Mobile (≤640px) product pages ───────────── */
+@media (max-width: 640px) {
+    /* Convergence hero */
+    .conv-wrap { margin-top: 24px; padding: 0 20px; }
+    .conv-labels { grid-template-columns: repeat(3, 1fr); row-gap: 8px; }
+    .conv-pill { font-size: 10px; padding: 5px 10px; }
+    .conv-tagline { font-size: 14px; margin-top: 16px; }
+
+    /* Product page sections */
+    .p-section h2 { font-size: clamp(22px, 5vw, 28px); }
+    .p-stats { grid-template-columns: 1fr 1fr; gap: 12px; }
+    .p-stat { padding: 20px 12px; }
+    .p-stat-val { font-size: 28px; }
+    .p-deliverables { grid-template-columns: 1fr; }
+    .p-del { padding: 16px; }
+    .p-step { grid-template-columns: 1fr; gap: 8px; margin-bottom: 20px; padding-bottom: 20px; }
+    .p-num-step { grid-template-columns: 40px 1fr; gap: 12px; margin-bottom: 24px; padding-bottom: 24px; }
+    .p-cta { padding: 56px 20px; }
+
+    /* Split layouts */
+    .p-split, .p-split-reverse { grid-template-columns: 1fr; gap: 32px; direction: ltr; }
+
+    /* Features nav → horizontal scrollable pill row */
+    .pf-nav {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        gap: 6px;
+        padding-bottom: 8px;
+        -webkit-overflow-scrolling: touch;
+    }
+    .pf-nav-link {
+        flex-shrink: 0;
+        padding: 8px 14px;
+        font-size: 12px;
+        background: rgba(255, 255, 255, 0.04);
+        border-radius: 16px;
+    }
+    .pf-nav-link.active::before { display: none; }
+    .pf-nav-link.active { background: rgba(255, 255, 255, 0.12); }
+    .pf-block h2 { font-size: clamp(22px, 5vw, 28px); }
+    .pf-image { border-radius: 10px; }
+}
+
