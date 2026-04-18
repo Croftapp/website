@@ -699,3 +699,41 @@ html:has(.product-page) { scroll-snap-type: none !important; }
     .mnav-drawer, .mnav-backdrop, .mnav-bar { transition: none; }
 }
 
+/* ── Mobile (≤640px) forms + touch targets ───── */
+@media (max-width: 640px) {
+    .form-row { flex-direction: column; gap: 12px; }
+    .form-row input,
+    textarea {
+        font-size: 16px;
+        min-height: 44px;
+        padding: 12px 14px;
+    }
+    .careers-form input[type="text"],
+    .careers-form input[type="email"],
+    .careers-form input[type="url"],
+    .careers-form textarea {
+        font-size: 16px;
+        min-height: 44px;
+    }
+    .demo-form input { font-size: 16px; min-height: 44px; }
+    .demo-row { grid-template-columns: 1fr; gap: 12px; }
+    form button[type="submit"],
+    .btn-dark,
+    .careers-form button[type="submit"] {
+        width: 100%;
+        min-height: 44px;
+    }
+    .prod-body a,
+    .footer-col a,
+    .footer-legal a {
+        padding: 6px 0;
+        display: inline-block;
+    }
+    .insights-dropdown select {
+        min-height: 44px;
+        font-size: 14px;
+    }
+    .insights-sort { flex-wrap: wrap; }
+    .insights-sort button { min-height: 40px; }
+}
+
