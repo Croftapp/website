@@ -526,6 +526,7 @@ html:has(.product-page) { scroll-snap-type: none !important; }
     .hero-banner-inner {
         flex-direction: column;
         align-items: flex-start;
+        justify-content: flex-end;
         gap: 16px;
         padding: 0 20px 24px;
     }
