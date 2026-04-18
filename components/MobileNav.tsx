@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
@@ -14,8 +15,13 @@ const navLinks = [
 export default function MobileNav() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const triggerButtonRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     setOpen(false);
@@ -41,22 +47,8 @@ export default function MobileNav() {
     };
   }, [open]);
 
-  return (
+  const overlay = (
     <>
-      <button
-        ref={triggerButtonRef}
-        type="button"
-        className="mnav-trigger"
-        aria-label="Open menu"
-        aria-expanded={open}
-        aria-controls="mobile-nav-drawer"
-        onClick={() => setOpen(true)}
-      >
-        <span className="mnav-bar" />
-        <span className="mnav-bar" />
-        <span className="mnav-bar" />
-      </button>
-
       <div
         className={`mnav-backdrop${open ? ' is-open' : ''}`}
         onClick={() => setOpen(false)}
@@ -104,6 +96,26 @@ export default function MobileNav() {
           Request a Demo
         </Link>
       </div>
+    </>
+  );
+
+  return (
+    <>
+      <button
+        ref={triggerButtonRef}
+        type="button"
+        className="mnav-trigger"
+        aria-label="Open menu"
+        aria-expanded={open}
+        aria-controls="mobile-nav-drawer"
+        onClick={() => setOpen(true)}
+      >
+        <span className="mnav-bar" />
+        <span className="mnav-bar" />
+        <span className="mnav-bar" />
+      </button>
+
+      {mounted && createPortal(overlay, document.body)}
     </>
   );
 }
