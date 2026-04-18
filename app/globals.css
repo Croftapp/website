@@ -485,3 +485,16 @@ html:has(.product-page) { scroll-snap-type: none !important; }
     .demo-info h1 { font-size:28px; }
     .demo-row { grid-template-columns:1fr; }
 }
+
+/* ── Mobile (≤640px) scroll + section sizing ───── */
+@media (max-width: 640px) {
+    html { scroll-snap-type: none; }
+    .sec-dark, .sec-light, .hero { min-height: auto; scroll-snap-align: none; }
+    footer { scroll-snap-align: none; }
+}
+
+/* ── Tablet (641–1024px) — relax section min-height ───── */
+@media (max-width: 1024px) and (min-width: 641px) {
+    .sec-dark, .sec-light, .hero { min-height: auto; }
+}
+
