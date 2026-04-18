@@ -493,3 +493,29 @@ html:has(.product-page) { scroll-snap-type: none !important; }
     .sec-dark, .sec-light, .hero { min-height: auto; }
 }
 
+/* ── Mobile (≤640px) spacing ─────────────────── */
+@media (max-width: 640px) {
+    .container { padding: 0 20px; }
+    .nav-inner { padding: 14px 20px; }
+    .sec-dark, .sec-light { padding: 56px 0; }
+    .cta-banner { padding: 64px 0; }
+    .p-section { padding: 48px 0; }
+    .p-container { padding: 0 20px; }
+    .p-hero { padding: 112px 0 40px; }
+    .about-wide { padding: 0 20px; }
+    .about-container { padding: 0 20px; }
+    .about-hero { padding: 120px 0 0; }
+    .about-section { padding: 40px 0; }
+    .insights-container { padding: 0 20px; }
+    .insights-hero { padding: 120px 0 32px; }
+    .insights-section { padding: 32px 0 64px; }
+    .demo-section { padding: 120px 0 64px; min-height: auto; }
+    .demo-layout { padding: 0 20px; gap: 32px; }
+    .demo-form-card { padding: 28px 20px; }
+    .pf-section-wrap { padding: 56px 0 32px; }
+    .pf-layout { padding: 0 20px; gap: 40px; }
+    .pf-blocks { gap: 56px; }
+    footer { padding: 56px 0 0; }
+    .footer-main { margin-bottom: 40px; }
+}
+
