@@ -725,10 +725,13 @@ html:has(.product-page) { scroll-snap-type: none !important; }
         min-height: 44px;
     }
     .prod-body a,
-    .footer-col a,
     .footer-legal a {
         padding: 6px 0;
         display: inline-block;
+    }
+    .footer-col a {
+        padding: 10px 0;
+        display: block;
     }
     .insights-dropdown select {
         min-height: 44px;
