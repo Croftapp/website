@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import MobileNav from './MobileNav';
 
 const navLinks = [
   { href: '/polaris', label: 'Polaris' },
@@ -49,6 +50,7 @@ export default function Nav() {
             Request a Demo
           </Link>
         </div>
+        <MobileNav />
       </div>
     </nav>
   );
