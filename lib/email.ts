@@ -6,6 +6,9 @@ import { Resend } from "resend";
 const FROM = process.env.EMAIL_FROM ?? "Croft <info@mail.croft.fi>";
 const REPLY_TO = process.env.EMAIL_REPLY_TO ?? "info@croft.fi";
 
+// Base URL for links in transactional emails (e.g. unsubscribe).
+const SITE_URL = process.env.SITE_URL ?? "https://croft.fi";
+
 /** Whether transactional email is wired up. Without a key, signups still
  *  succeed — we just skip the welcome message. */
 export function emailConfigured(): boolean {
@@ -14,7 +17,8 @@ export function emailConfigured(): boolean {
 
 const SUBJECT = "Welcome to Croft";
 
-const TEXT = `Thank you for joining.
+function text(pageUrl: string): string {
+  return `Thank you for joining.
 
 You're now on the list for Croft — early to something we believe will come to matter.
 
@@ -27,9 +31,10 @@ We are one. We are Croft.
 — The Croft team
 
 —
-You're receiving this because you joined the Croft waitlist. Don't want these? Just reply and we'll remove you.`;
+You're receiving this because you joined the Croft waitlist. To unsubscribe: ${pageUrl}`;
+}
 
-function html(): string {
+function html(pageUrl: string): string {
   return `<!doctype html>
 <html lang="en">
   <body style="margin:0;padding:0;background-color:#ffffff;">
@@ -56,7 +61,8 @@ function html(): string {
               <td style="padding-top:36px;">
                 <hr style="border:none;border-top:1px solid #e3e0d8;margin:0 0 16px;" />
                 <p style="margin:0;font-family:Georgia,'Times New Roman',serif;font-size:13px;line-height:1.6;color:#9a9ea3;">
-                  You&rsquo;re receiving this because you joined the Croft waitlist. Don&rsquo;t want these? Just reply and we&rsquo;ll remove you.
+                  You&rsquo;re receiving this because you joined the Croft waitlist.
+                  <a href="${pageUrl}" style="color:#9a9ea3;">Unsubscribe</a>.
                 </p>
               </td>
             </tr>
@@ -70,15 +76,26 @@ function html(): string {
 
 /** Send the welcome email. Never throws — a failed send must not fail the
  *  signup; the caller logs and moves on. */
-export async function sendWelcomeEmail(to: string): Promise<void> {
+export async function sendWelcomeEmail(
+  to: string,
+  unsubToken: string
+): Promise<void> {
   if (!emailConfigured()) return;
+  const pageUrl = `${SITE_URL}/unsubscribe?token=${unsubToken}`;
+  const oneClickUrl = `${SITE_URL}/api/unsubscribe?token=${unsubToken}`;
   const resend = new Resend(process.env.RESEND_API_KEY);
   await resend.emails.send({
     from: FROM,
     replyTo: REPLY_TO,
     to,
     subject: SUBJECT,
-    text: TEXT,
-    html: html(),
+    text: text(pageUrl),
+    html: html(pageUrl),
+    headers: {
+      // RFC 8058 one-click unsubscribe — surfaces Gmail/Apple Mail's native
+      // unsubscribe button, which POSTs to the URL below.
+      "List-Unsubscribe": `<${oneClickUrl}>`,
+      "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
+    },
   });
 }

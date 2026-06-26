@@ -60,7 +60,7 @@ export async function POST(req: Request) {
   const userAgent = req.headers.get("user-agent")?.slice(0, 300) ?? null;
 
   try {
-    const { alreadyJoined } = await addSignup({
+    const { alreadyJoined, unsubToken } = await addSignup({
       email,
       name,
       source,
@@ -70,9 +70,9 @@ export async function POST(req: Request) {
 
     // Only welcome genuinely new signups, and never let a mail failure break
     // the signup itself.
-    if (!alreadyJoined) {
+    if (!alreadyJoined && unsubToken) {
       try {
-        await sendWelcomeEmail(email);
+        await sendWelcomeEmail(email, unsubToken);
       } catch (err) {
         console.error("Welcome email failed:", err);
       }
