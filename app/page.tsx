@@ -29,15 +29,8 @@ export default function Home() {
           that knows you, grows with you, and serves your goals over a lifetime.
         </p>
         <p>
-          We are engineers, builders, and researchers who have spent years at
-          the applied frontier of AI. Long before agents became mainstream, we
-          were building agent systems. Before orchestration became standard, we
-          were designing complex AI workflows. Before real-time AI became
-          practical, we were developing agentic systems built to operate
-          continuously. Croft is the result of lessons learned at each stage of
-          that evolution. Our backgrounds span AI systems, automation and
-          robotics, security, architecture, and governance — the disciplines
-          that must come together to create an intelligence worthy of trust.
+          We are researchers, engineers, and builders. We have spent years at
+          the frontier of AI.
         </p>
       </div>
 
